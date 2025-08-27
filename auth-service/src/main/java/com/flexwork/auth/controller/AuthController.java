@@ -59,7 +59,7 @@ public class AuthController {
     @PostMapping("/logout")
     public CommonResult<Void> logout() {
         StpUtil.logout();
-        return CommonResult.success("Logout successful");
+        return CommonResult.success("Logout successful", null);
     }
 }
 
