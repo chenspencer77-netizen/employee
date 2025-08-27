@@ -1,0 +1,41 @@
+server:
+  port: 8081
+
+# Sa-Token configuration
+sa-token:
+  # Token name
+  token-name: "Authorization"
+  # Token timeout, in seconds
+  timeout: 2592000
+  # Token style
+  token-style: "uuid"
+  # Use Redis for session storage
+  dao: "sa-token-dao-redis-jackson"
+
+# Spring Redis configuration
+spring:
+  data:
+    redis:
+      host: redis
+      port: 6379
+      database: 0
+  cloud:
+    sentinel:
+      transport:
+        dashboard: sentinel:8858
+
+# Dubbo configuration
+dubbo:
+  protocol:
+    name: dubbo
+    port: 20880
+  registry:
+    address: nacos://nacos:8848
+  application:
+    qos-enable: false
+  consumer:
+    check: false # Disable check on startup, useful for development
+
+logging:
+  level:
+    cn.dev33.satoken: DEBUG
